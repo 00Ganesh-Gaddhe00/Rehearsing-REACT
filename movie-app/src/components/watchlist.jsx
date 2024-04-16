@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import { v4 as uuidv4 } from 'uuid';
+
 const genreName = {
     28: "Action",
     12: "Adventure",
@@ -86,7 +88,7 @@ useEffect(()=>{
         <div className="flex mt-5 justify-center">
             {genreList.map((genre)=>{
                  return(
-                    <div className="m-4 h-[2.5rem] w-[8rem] bg-blue-400 text-white rounded-xl flex justify-center items-center"
+                    <div key={uuidv4()} className="m-4 h-[2.5rem] w-[8rem] bg-blue-400 text-white rounded-xl flex justify-center items-center"
             >{genre}</div>
                  )
             })}
@@ -124,7 +126,7 @@ useEffect(()=>{
                         {WatchList.filter((movieObj)=>{
                             return movieObj.title.toLowerCase().includes(search.toLowerCase())
                         }).map((movieObj) => {
-                            return <tr className=" border-b-2">
+                            return <tr key={movieObj.id} className=" border-b-2">
                                 <td className="flex items-center mx-4 py-4"> <img className=" rounded-[6rem]	h-[6rem] w-[6rem]"
                                     src={"https://image.tmdb.org/t/p/original/" + movieObj.poster_path} alt="" />
                                     <div className="mx-4">{movieObj.title}</div>
