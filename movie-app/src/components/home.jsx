@@ -4,6 +4,7 @@ import Trendingmovies from "./trendingMovies.jsx"
 
 export default function Home( {
                                 WatchList,
+                                setWatchList,
                                 handleaddWL,
                                 handleremoveWL
 }
@@ -13,6 +14,7 @@ export default function Home( {
         <Banner/>
         <Trendingmovies 
             WatchList={WatchList}
+            setWatchList={setWatchList}
             handleaddWL={handleaddWL}
             handleremoveWL={handleremoveWL}
         />

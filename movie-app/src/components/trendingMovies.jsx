@@ -7,6 +7,7 @@ import Pagination from "./pagination"
 export default function Trendingmovies(
 
                              {   WatchList,
+                              setWatchList,
                                 handleaddWL,
                                 handleremoveWL }
 ){
