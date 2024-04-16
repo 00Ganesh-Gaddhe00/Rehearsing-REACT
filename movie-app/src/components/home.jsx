@@ -1,14 +1,21 @@
-import Navbar from "./navbar.jsx"
 import Banner from "./banner.jsx"
 import Trendingmovies from "./trendingMovies.jsx"
 
 
-export default function Home(){
+export default function Home( {
+                                WatchList,
+                                handleaddWL,
+                                handleremoveWL
+}
+){
     return(
         <>
-        <Navbar/>
         <Banner/>
-        <Trendingmovies/>
+        <Trendingmovies 
+            WatchList={WatchList}
+            handleaddWL={handleaddWL}
+            handleremoveWL={handleremoveWL}
+        />
         </>
     )
     }
