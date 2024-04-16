@@ -6,24 +6,25 @@ import Pagination from "./pagination"
 
 export default function Trendingmovies(
 
-                             {   WatchList,
+                             {  pageNo,
+                              setPageNo,
+                               WatchList,
                               setWatchList,
                                 handleaddWL,
                                 handleremoveWL }
 ){
   const [movies, setMovies] = useState([])
-  const[pageNo, setPageNo] = useState(1);
   
 
 
-    function handlepagenodec(){
-        if(pageNo > 1) setPageNo(pageNo-1)
-    }
+    // function handlepagenodec(){
+    //     if(pageNo > 1) setPageNo(pageNo-1)
+    // }
 
-    function handlepagenoInc(){
-      setPageNo(pageNo+1);
+    // function handlepagenoInc(){
+    //   setPageNo(pageNo+1);
 
-    }
+    // }
 
     
     
@@ -67,8 +68,9 @@ return(
 
         <Pagination
           pageNo={pageNo}
-          handlepagenoInc={handlepagenoInc}
-          handlepagenodec={handlepagenodec}
+          setPageNo={setPageNo}
+          // handlepagenoInc={handlepagenoInc}
+          // handlepagenodec={handlepagenodec}
         />
 
         </>
