@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react"
+import {useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import { useContext } from "react";
+import { Moviecontext } from "./moviecontext";
 
 const genreName = {
     28: "Action",
@@ -25,11 +27,11 @@ const genreName = {
 
 export default function Watchlist(
 
-    {
-        WatchList,
-        handleremoveWL,
-        setWatchList
-    }
+    // {
+    //     WatchList,
+    //     handleremoveWL,
+    //     setWatchList
+    // }
 ){
     // let movies = [
     //     {
@@ -54,6 +56,9 @@ export default function Watchlist(
   
   const [ genreList, SetgenreList] = useState(["All Genres"])
 const [search, setSearch] = useState('')
+const [genrefilter, setGenrefilter] = useState("All Genres")
+
+const { WatchList, handleremoveWL,setWatchList} = useContext(Moviecontext);
 
 
 useEffect(()=>{
@@ -82,23 +87,31 @@ useEffect(()=>{
         setSearch(e.target.value);
    }
 
+    function handlefilter(genre){
+        
+         setGenrefilter(genre);
+        
+    }
 
     return(
         <>
         <div className="flex mt-5 justify-center">
-            {genreList.map((genre)=>{
+            {(genrefilter==="All Genres")?
+             genreList.map((genre)=>{
                  return(
-                    <div key={uuidv4()} className="m-4 h-[2.5rem] w-[8rem] bg-blue-400 text-white rounded-xl flex justify-center items-center"
+                    <div key={uuidv4()} onClick={()=>handlefilter(genre)} className=" cursor-pointer m-4 h-[2.5rem] w-[8rem] bg-blue-400 text-white rounded-xl flex justify-center items-center"
             >{genre}</div>
                  )
-            })}
+            }) : 
+            <>
+            <div onClick={()=>handlefilter("All Genres")} className=" cursor-pointer m-4 h-[2.5rem] w-[8rem] bg-blue-400 text-white rounded-xl flex justify-center items-center"
+        >{"All Genres"}</div>
+            <div  onClick={()=>handlefilter(genrefilter)} className=" cursor-pointer m-4 h-[2.5rem] w-[8rem] bg-blue-400 text-white rounded-xl flex justify-center items-center"
+        >{genrefilter}</div>
+            </>
+            }
             
-           
-
-
-
-
-        </div>
+           </div>
 
 
         <div className="flex justify-center my-5">
@@ -123,7 +136,10 @@ useEffect(()=>{
                     </tr>
                 </thead>
                 <tbody >
-                        {WatchList.filter((movieObj)=>{
+                        {
+                         WatchList.filter((movieObj)=>{
+                             return (genreName[movieObj.genre_ids[0]]===genrefilter || genrefilter==="All Genres")
+                        }).filter((movieObj)=>{
                             return movieObj.title.toLowerCase().includes(search.toLowerCase())
                         }).map((movieObj) => {
                             return <tr key={movieObj.id} className=" border-b-2">

@@ -2,21 +2,23 @@ import { useEffect, useState } from "react"
 import Moviecard from "./moviecard"
 import axios from "axios"
 import Pagination from "./pagination"
+import { useContext } from "react"
+import { Moviecontext } from "./moviecontext"
 
 
 export default function Trendingmovies(
 
-                             {  pageNo,
-                              setPageNo,
-                               WatchList,
-                              setWatchList,
-                                handleaddWL,
-                                handleremoveWL }
+                            //  {  pageNo,
+                            //   setPageNo,
+                            //    WatchList,
+                            //   setWatchList,
+                            //     handleaddWL,
+                            //     handleremoveWL }
 ){
   const [movies, setMovies] = useState([])
   
 
-
+   const  { pageNo }  = useContext(Moviecontext)
     // function handlepagenodec(){
     //     if(pageNo > 1) setPageNo(pageNo-1)
     // }
@@ -54,9 +56,7 @@ return(
            movieObj={movieObj}
            title = {movieObj.title}
            posterpath = {movieObj.poster_path}
-           WatchList={WatchList}
-           handleaddWL = {handleaddWL}
-           handleremoveWL = {handleremoveWL}
+          
 
          
            />
@@ -66,13 +66,7 @@ return(
 
         </div>
 
-        <Pagination
-          pageNo={pageNo}
-          setPageNo={setPageNo}
-          // handlepagenoInc={handlepagenoInc}
-          // handlepagenodec={handlepagenodec}
-        />
-
+        <Pagination/>
         </>
     )
     }
