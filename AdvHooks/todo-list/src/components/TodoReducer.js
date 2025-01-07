@@ -10,6 +10,7 @@ export default function TodoReducer(){
         title: "",
         by: ""
       })
+      
 
     function handleTask(e){
         e.preventDefault();

@@ -30,12 +30,12 @@ export default function Moviecard(
 
         {isContain(movieObj)? 
         <div onClick={()=>handleremoveWL(movieObj)}
-        className="  select-none bg-gray-800/50 m-2 text-md rotate-90 px-1.5 py-0.5 rounded-lg cursor-pointer" >&#10060;</div>:
+        className="  select-none bg-gray-800/50 m-2 text-md rotate-90 px-1.5 py-0.5 rounded-lg cursor-pointer" role="button">&#10060;</div>:
          <div onClick={()=>handleaddWL(movieObj)}
-         className=" select-none bg-gray-800/50 m-2 text-xl px-1 rounded-lg cursor-pointer" >&#128525;</div>
+         className=" select-none bg-gray-800/50 m-2 text-xl px-1 rounded-lg cursor-pointer" role="button" >&#128525;</div>
         }
 
-        <div className=" text-slate-300	 text-lg bg-gray-800/50	w-full text-center p-2"	>{title}</div>
+        <div aria-label={title} className=" text-slate-300	 text-lg bg-gray-800/50	w-full text-center p-2"	>{title}</div>
 
     </div> 
     )

@@ -15,15 +15,16 @@ export default function Banner(){
         })
     },[])
 
-    if(movieObj.backdrop_path === undefined){
-        return <>...loading</>
+    if (!movieObj || !movieObj.backdrop_path) {
+        return <div>Loading...</div>;
     }
 
 
     
 return(
     
-        <div className="flex bg-slate-800 shadow-lg shadow-gray-400 justify-center mx-8 mt-3 items-end h-[60vh] bg-cover	 bg-[url('https://weliveentertainment.com/wp-content/uploads/2024/02/madame-web-banner-4.jpg')]"
+        <div data-testid="banner"
+        className="flex bg-slate-800 shadow-lg shadow-gray-400 justify-center mx-8 mt-3 items-end h-[60vh] bg-cover	 bg-[url('https://weliveentertainment.com/wp-content/uploads/2024/02/madame-web-banner-4.jpg')]"
         style={{backgroundImage:`url(https://image.tmdb.org/t/p/original${movieObj.backdrop_path})`}}>
             <div className=" text-slate-300	 text-lg bg-gray-800/50	w-full text-center p-2"	>{movieObj.title}</div>
         </div>

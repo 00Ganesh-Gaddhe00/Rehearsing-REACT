@@ -99,7 +99,7 @@ useEffect(()=>{
             {(genrefilter==="All Genres")?
              genreList.map((genre)=>{
                  return(
-                    <div key={uuidv4()} onClick={()=>handlefilter(genre)} className=" cursor-pointer m-4 h-[2.5rem] w-[8rem] bg-blue-400 text-white rounded-xl flex justify-center items-center"
+                    <div data-testid="GenreDisplay" key={uuidv4()} onClick={()=>handlefilter(genre)} className=" cursor-pointer m-4 h-[2.5rem] w-[8rem] bg-blue-400 text-white rounded-xl flex justify-center items-center"
             >{genre}</div>
                  )
             }) : 
@@ -126,9 +126,9 @@ useEffect(()=>{
                     <tr>
                         <th>Name</th>
                         <th >
-                            <span onClick={RatingIncrease} className="cursor-pointer" ><i className="fa-solid fa-arrow-up"></i></span>
+                            <span role="button" aria-label="arrow-up" onClick={RatingIncrease} className="cursor-pointer" ><i className="fa-solid fa-arrow-up"></i></span>
                             <span className="mx-2">Ratings</span>
-                            <span onClick={RatingDecrease} className="cursor-pointer" ><i className="fa-solid fa-arrow-down"></i></span>
+                            <span role="button" aria-label="arrow-down" onClick={RatingDecrease} className="cursor-pointer" ><i className="fa-solid fa-arrow-down"></i></span>
                         </th>
                         <th>Popularity</th>
                         <th>Genre</th>
@@ -150,7 +150,7 @@ useEffect(()=>{
                                 <td >{movieObj.vote_average}</td>
                                 <td>{movieObj.popularity}</td>
                                 <td>{genreName[movieObj.genre_ids[0]]}</td>
-                                <td  onClick={()=>handleremoveWL(movieObj)} className=" text-red-400 "><i className="fa-solid fa-trash-can cursor-pointer"></i></td>
+                                <td role="button" aria-label="delete" onClick={()=>handleremoveWL(movieObj)} className=" text-red-400 "><i className="fa-solid fa-trash-can cursor-pointer"></i></td>
                             </tr>
                         })}
 

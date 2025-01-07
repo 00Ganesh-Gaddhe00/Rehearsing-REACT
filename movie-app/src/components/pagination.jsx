@@ -18,9 +18,9 @@ export default function Pagination(){
     return(
         <>
          <div className="flex bg-gray-300 p-3 justify-center	gap-14 font-bold m-4">
-            <div onClick={handlepagenodec} className="cursor-pointer"><i className="fa-solid fa-arrow-left"></i></div>
+            <div onClick={handlepagenodec} className="cursor-pointer" role="button" aria-label="left" ><i className="fa-solid fa-arrow-left"></i></div>
             <div>{pageNo}</div>
-            <div onClick={handlepagenoInc} className="cursor-pointer"><i className="fa-solid fa-arrow-right"></i></div>
+            <div onClick={handlepagenoInc} className="cursor-pointer" role="button" aria-label="right" ><i className="fa-solid fa-arrow-right"></i></div>
         </div>
         </>
     )
