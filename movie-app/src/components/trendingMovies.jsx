@@ -4,6 +4,7 @@ import axios from "axios"
 import Pagination from "./pagination"
 import { useContext } from "react"
 import { Moviecontext } from "./moviecontext"
+import useTrendingMovies from "./useTrendingmovies"
 
 
 export default function Trendingmovies(
@@ -15,7 +16,7 @@ export default function Trendingmovies(
                             //     handleaddWL,
                             //     handleremoveWL }
 ){
-  const [movies, setMovies] = useState([])
+  // const [movies, setMovies] = useState([])
   
 
    const  { pageNo }  = useContext(Moviecontext)
@@ -27,23 +28,27 @@ export default function Trendingmovies(
     //   setPageNo(pageNo+1);
 
     // }
+    const { movies, loading } = useTrendingMovies(pageNo);
 
+    if (loading) {
+      return <>...loading</>;
+    }
     
     
 
-  useEffect(()=>{
-       axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=e8f62da5e2126af5d78d9b0d4bc4d1ce&page=${pageNo}`)
+//   useEffect(()=>{
+//        axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=e8f62da5e2126af5d78d9b0d4bc4d1ce&page=${pageNo}`)
        
-       .then((response)=>{
-          let moviesarray = response.data.results
-           setMovies(moviesarray);
-       })
-  },[pageNo])
+//        .then((response)=>{
+//           let moviesarray = response.data.results
+//            setMovies(moviesarray);
+//        })
+//   },[pageNo])
 
 
- if(movies.length===0){
-    return<>...loading</>
- }
+//  if(movies.length===0){
+//     return<>...loading</>
+//  }
 
 return(
         <>
